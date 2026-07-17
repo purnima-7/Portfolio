@@ -88,3 +88,7 @@ body {
   width: min(1280px, calc(100% - 48px));
   margin-inline: auto;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

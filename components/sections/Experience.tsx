@@ -1,183 +1,137 @@
 "use client";
 
-import Reveal from "@/components/animations/Reveal";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-const experience = [
-  {
-    period: "Aug 2025 — May 2026",
-    role: "Delegate Affairs Head",
-    organization: "Parola — The Literary Hub",
-    description:
-      "Led delegate management for large-scale events, coordinated cross-functional teams and streamlined communication for 200+ participants.",
-    highlights: [
-      "Managed 200+ delegates",
-      "Led volunteer coordination",
-      "Improved event operations",
-    ],
-  },
-  {
-    period: "May 2024 — May 2025",
-    role: "Technical Team Member",
-    organization: "AI/ML HUB",
-    description:
-      "Collaborated on AI and computer vision projects, explored machine learning workflows and contributed to prototype development.",
-    highlights: [
-      "Computer Vision",
-      "Machine Learning",
-      "Prototype Development",
-    ],
-  },
-];
+import Timeline from "@/components/experience/Timeline";
+import ExperienceCard from "@/components/experience/ExperienceCard";
+
+import { experiences } from "@/data/experience";
 
 export default function Experience() {
+  // Latest experience selected by default
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section
       id="experience"
-      className="section bg-[var(--surface-light)]"
+      className="
+        relative
+        overflow-hidden
+        bg-[var(--background)]
+        py-32
+      "
     >
-      <div className="container">
+      {/* Background Glow */}
 
-        <Reveal>
+      <div
+        className="
+          absolute
+          left-1/2
+          top-0
+          h-[600px]
+          w-[600px]
+          -translate-x-1/2
+          rounded-full
+          bg-[var(--mauve)]
+          opacity-5
+          blur-[140px]
+        "
+      />
 
-          <p className="eyebrow">
-            EXPERIENCE
+      <div className="container mx-auto max-w-7xl px-6">
+
+        {/* Section Header */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <p
+            className="
+              text-sm
+              font-semibold
+              uppercase
+              tracking-[0.35em]
+              text-[var(--primary)]
+            "
+          >
+            Experience
           </p>
 
-          <h2 className="heading-lg mt-6 max-w-3xl text-[var(--text-dark)]">
-            Building technical expertise through projects,
-            leadership and collaborative environments.
+          <h2
+            className="
+              mt-5
+              text-5xl
+              font-bold
+              text-[var(--primary)]
+            "
+          >
+            Building Through
+            <br />
+            Real Experiences
           </h2>
 
-        </Reveal>
-
-        <div className="relative mt-24">
-
-          {/* Timeline */}
-
-          <div
+          <p
             className="
-              absolute
-              left-[18px]
-              top-0
-              bottom-0
-              hidden
-              w-px
-              bg-[var(--border-light)]
-              md:block
+              mx-auto
+              mt-6
+              max-w-2xl
+              text-lg
+              leading-8
+              text-[var(--text-light)]
             "
+          >
+            From technical communities to enterprise internships,
+            every milestone has shaped how I approach engineering,
+            collaboration, and product thinking.
+          </p>
+        </motion.div>
+
+        {/* Timeline */}
+
+        <div className="mt-24">
+          <Timeline
+            experiences={experiences}
+            activeIndex={activeIndex}
+            onSelect={setActiveIndex}
           />
-
-          <div className="space-y-20">
-
-            {experience.map((item, index) => (
-
-              <Reveal
-                key={item.role}
-                delay={index * 0.1}
-              >
-
-                <div className="grid gap-8 md:grid-cols-[60px_220px_1fr]">
-
-                  {/* Dot */}
-
-                  <div className="hidden md:flex justify-center">
-
-                    <div
-                      className="
-                        mt-2
-                        h-9
-                        w-9
-                        rounded-full
-                        border-4
-                        border-white
-                        bg-[var(--primary)]
-                        shadow-lg
-                      "
-                    />
-
-                  </div>
-
-                  {/* Date */}
-
-                  <div>
-
-                    <p
-                      className="
-                        text-sm
-                        font-semibold
-                        uppercase
-                        tracking-[0.25em]
-                        text-[var(--primary)]
-                      "
-                    >
-                      {item.period}
-                    </p>
-
-                  </div>
-
-                  {/* Content */}
-
-                  <div
-                    className="
-                      rounded-[30px]
-                      border
-                      border-[var(--border-light)]
-                      bg-white
-                      p-8
-                      shadow-sm
-                      transition-all
-                      duration-300
-                      hover:-translate-y-2
-                      hover:shadow-xl
-                    "
-                  >
-
-                    <h3 className="text-3xl font-bold text-[var(--text-dark)]">
-                      {item.role}
-                    </h3>
-
-                    <p className="mt-2 text-lg text-[var(--primary)]">
-                      {item.organization}
-                    </p>
-
-                    <p className="mt-6 leading-8 text-[var(--text-light)]">
-                      {item.description}
-                    </p>
-
-                    <div className="mt-8 flex flex-wrap gap-3">
-
-                      {item.highlights.map((highlight) => (
-
-                        <span
-                          key={highlight}
-                          className="
-                            rounded-full
-                            bg-[var(--surface-alt)]
-                            px-4
-                            py-2
-                            text-sm
-                            font-medium
-                            text-[var(--text-dark)]
-                          "
-                        >
-                          {highlight}
-                        </span>
-
-                      ))}
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </Reveal>
-
-            ))}
-
-          </div>
-
         </div>
+
+        {/* Experience Card */}
+
+        <motion.div
+          key={activeIndex}
+          initial={{
+            opacity: 0,
+            y: 25,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.45,
+          }}
+          className="
+            mx-auto
+            mt-20
+            max-w-5xl
+          "
+        >
+          <ExperienceCard
+            experience={experiences[activeIndex]}
+          />
+        </motion.div>
 
       </div>
     </section>

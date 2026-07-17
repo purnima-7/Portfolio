@@ -27,7 +27,7 @@ export const projects = [
 
     image: "/images/projects/enqueue-1.png",
 
-    github: "https://github.com/your-repo",
+    github: "https://github.com/purnima-7/EnQueue-SecureBazaar",
     demo: "",
 
     tech: [

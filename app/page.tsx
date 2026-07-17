@@ -18,7 +18,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <Projects />
-      <Leadership />
+      {/* <Leadership /> */}
       <Achievements />
       <Contact />
       <Footer />
