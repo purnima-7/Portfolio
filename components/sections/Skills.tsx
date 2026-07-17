@@ -1,147 +1,94 @@
 "use client";
 
-import Reveal from "@/components/animations/Reveal";
+import { motion } from "framer-motion";
 
-const skills = [
-  {
-    title: "Languages",
-    items: [
-      "C++",
-      "Python",
-      "JavaScript",
-      "TypeScript",
-      "SQL",
-    ],
-  },
-  {
-    title: "Frontend",
-    items: [
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-      "HTML",
-      "CSS",
-      "Framer Motion",
-    ],
-  },
-  {
-    title: "Backend",
-    items: [
-      "Node.js",
-      "Express",
-      "REST APIs",
-      "JWT",
-      "MongoDB",
-      "PostgreSQL",
-    ],
-  },
-  {
-    title: "AI & Core CS",
-    items: [
-      "OpenCV",
-      "TensorFlow",
-      "Scikit-Learn",
-      "Feature Engineering",
-      "Data Structures",
-      "OOP",
-      "DBMS",
-      "Operating Systems",
-      "Computer Networks",
-    ],
-  },
-];
+import SkillCard from "../skills/SkillCard";
+import { skills } from "@/data/skills";
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="section bg-white text-[var(--text-dark)]"
+      className="relative overflow-hidden bg-[var(--surface-alt)] py-28"
     >
-      <div className="container">
+      {/* Background Glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-[var(--mauve)]/10 blur-3xl" />
+        <div className="absolute right-0 bottom-20 h-80 w-80 rounded-full bg-[var(--pink)]/20 blur-3xl" />
+      </div>
 
-        <Reveal>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto mb-20 max-w-3xl text-center"
+        >
+          <span
+            className="
+              inline-flex
+              rounded-full
+              bg-[var(--pink)]
+              px-4
+              py-2
+              text-sm
+              font-semibold
+              text-[var(--prune)]
+            "
+          >
+            Technical Expertise
+          </span>
 
-          <p className="eyebrow">
-            SKILLS
-          </p>
-
-          <h2 className="heading-lg mt-6 max-w-3xl">
-            Technologies I use to build reliable software.
+          <h2 className="mt-6 text-4xl font-bold tracking-tight text-[var(--text-dark)] md:text-5xl">
+            Skills & Technologies
           </h2>
 
-          <p className="copy mt-8">
-            My focus isn&apos;t on collecting technologies—it&apos;s on
-            understanding them deeply enough to build scalable,
-            maintainable and efficient systems.
+          <p className="mt-6 text-lg leading-8 text-[var(--text-light)]">
+            From building scalable web applications to developing AI-powered
+            solutions, these are the technologies and engineering fundamentals
+            I use to turn ideas into production-ready software.
           </p>
+        </motion.div>
 
-        </Reveal>
+        {/* Bento Grid */}
+        <div className="grid gap-8 lg:grid-cols-12">
+          {/* Languages */}
+          <div className="lg:col-span-5 flex">
+            <SkillCard {...skills[0]} delay={0.05} />
+          </div>
 
-        <div className="mt-20 grid gap-8 lg:grid-cols-2">
+          {/* Frontend */}
+          <div className="lg:col-span-7 flex">
+            <SkillCard {...skills[1]} delay={0.1} />
+          </div>
 
-          {skills.map((category, index) => (
+          {/* Backend */}
+          <div className="lg:col-span-7 flex">
+            <SkillCard {...skills[2]} delay={0.15} />
+          </div>
 
-            <Reveal
-              key={category.title}
-              delay={index * 0.08}
-            >
+          {/* Databases */}
+          <div className="lg:col-span-5 flex">
+            <SkillCard {...skills[3]} delay={0.2} />
+          </div>
 
-              <div
-                className="
-                  h-full
-                  rounded-[32px]
-                  border
-                  border-[var(--border-light)]
-                  bg-[var(--surface-alt)]
-                  p-8
-                  transition-all
-                  duration-300
-                  hover:-translate-y-2
-                  hover:shadow-xl
-                "
-              >
+          {/* AI */}
+          <div className="lg:col-span-6 flex">
+            <SkillCard {...skills[4]} delay={0.25} />
+          </div>
 
-                <h3 className="text-2xl font-bold">
-                  {category.title}
-                </h3>
+          {/* Cloud */}
+          <div className="lg:col-span-6 flex">
+            <SkillCard {...skills[5]} delay={0.3} />
+          </div>
 
-                <div className="mt-8 flex flex-wrap gap-3">
-
-                  {category.items.map((skill) => (
-
-                    <span
-                      key={skill}
-                      className="
-                        rounded-full
-                        border
-                        border-[var(--border-light)]
-                        bg-white
-                        px-4
-                        py-2
-                        text-sm
-                        font-medium
-                        transition-all
-                        duration-300
-                        hover:border-[var(--primary)]
-                        hover:bg-[var(--primary)]
-                        hover:text-white
-                      "
-                    >
-                      {skill}
-                    </span>
-
-                  ))}
-
-                </div>
-
-              </div>
-
-            </Reveal>
-
-          ))}
-
+          {/* Core CS */}
+          <div className="lg:col-span-12 flex">
+            <SkillCard {...skills[6]} delay={0.35} />
+          </div>
         </div>
-
       </div>
     </section>
   );
