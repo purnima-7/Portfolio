@@ -12,8 +12,8 @@ import EngineeringHighlights from "@/components/sections/EngineeringHighlights";
 export default function Home() {
   return (
     <main>
-      {/* <Navbar /> */}
-      {/* <Hero /> */}
+      <Navbar />
+      <Hero />
       {/* <EngineeringHighlights /> */}
       <Skills />
       <Experience />
