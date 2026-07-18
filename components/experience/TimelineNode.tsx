@@ -3,148 +3,129 @@
 import { motion } from "framer-motion";
 
 interface TimelineNodeProps {
-  year: string;
-  organization: string;
-  active: boolean;
-  onClick: () => void;
+  active?: boolean;
 }
 
 export default function TimelineNode({
-  year,
-  organization,
-  active,
-  onClick,
+  active = true,
 }: TimelineNodeProps) {
-
   return (
-    <motion.button
-      type="button"
-      onClick={onClick}
-      whileHover={{ y: -4 }}
-      whileTap={{ scale: 0.96 }}
-      className="
-        group
-        relative
-        flex
-        w-[180px]
-        flex-col
-        items-center
-        text-center
-        outline-none
-      "
+    <motion.div
+      initial={{
+        opacity: 0,
+        scale: 0.8,
+      }}
+      whileInView={{
+        opacity: 1,
+        scale: 1,
+      }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.45,
+      }}
+      className="relative flex items-center justify-center"
     >
-      {/* Timeline Node */}
+      {/* Soft Glow */}
+
+      {active && (
+        <motion.div
+          animate={{
+            scale: [1, 1.08, 1],
+            opacity: [0.18, 0.3, 0.18],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="
+            absolute
+            h-20
+            w-20
+            rounded-full
+            blur-3xl
+          "
+          style={{
+            background: "var(--experience-accent-soft)",
+          }}
+        />
+      )}
+
+      {/* Outer Ring */}
+
+      <div
+        className="
+          relative
+          flex
+          h-9
+          w-9
+          items-center
+          justify-center
+          rounded-full
+          border-2
+        "
+        style={{
+          background: "var(--experience-card)",
+          borderColor: "var(--experience-accent)",
+        }}
+      >
+        {/* Inner Circle */}
+
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="
+            h-4
+            w-4
+            rounded-full
+          "
+          style={{
+            background: "var(--experience-accent)",
+          }}
+        />
+      </div>
+
+      {/* Year Badge */}
 
       <motion.div
-        animate={{
-  scale: active ? 1.15 : 1,
-  boxShadow: active
-    ? "0 0 0 8px rgba(189,142,137,0.12)"
-    : "0 0 0 0 rgba(189,142,137,0)",
-}}
-        transition={{
-          type: "spring",
-          stiffness: 350,
-          damping: 20,
+        initial={{
+          opacity: 0,
+          x: -10,
         }}
-        className="relative"
-      >
-        {/* Glow */}
-
-        {active && (
-          <motion.div
-            layoutId="timeline-glow"
-            className="
-              absolute
-              inset-0
-              rounded-full
-              bg-[var(--mauve)]
-              blur-xl
-              opacity-25
-              scale-[2.5]
-            "
-          />
-        )}
-
-        {/* Circle */}
-
-        <div
-          className={`
-            relative
-            z-10
-            flex
-            h-6
-            w-6
-            items-center
-            justify-center
-            rounded-full
-            border-2
-            transition-all
-            duration-300
-
-            ${
-              active
-                ? "border-[var(--mauve)] bg-[var(--mauve)]"
-                : "border-[var(--border)] bg-white group-hover:border-[var(--mauve)]"
-            }
-          `}
-        >
-          {active && (
-            <motion.div
-              layoutId="active-dot"
-              className="
-                h-2
-                w-2
-                rounded-full
-                bg-white
-              "
-            />
-          )}
-        </div>
-      </motion.div>
-
-      {/* Year */}
-
-      <motion.p
-        animate={{
-          opacity: active ? 1 : 0.7,
-          y: active ? 0 : 2,
+        whileInView={{
+          opacity: 1,
+          x: 0,
+        }}
+        viewport={{ once: true }}
+        transition={{
+          delay: 0.15,
         }}
         className="
-          mt-6
+          absolute
+          -left-20
+          rounded-full
+          border
+          px-3
+          py-1
           text-xs
-          font-bold
-          tracking-[0.35em]
-          uppercase
-          text-[var(--text-light)]
-        "
-      >
-        {year}
-      </motion.p>
-
-      {/* Organization */}
-
-      <motion.p
-        animate={{
-          opacity: active ? 1 : 0.7,
-          y: active ? 0 : 2,
-        }}
-        className={`
-          mt-2
-          text-lg
           font-semibold
-          transition-colors
-          duration-300
-
-          ${
-            active
-              ? "text-[var(--text-dark)]"
-              : "text-[var(--text-light)]"
-          }
-        `}
+          tracking-[0.2em]
+          uppercase
+        "
+        style={{
+          background: "var(--experience-surface)",
+          borderColor: "var(--experience-border)",
+          color: "var(--experience-accent)",
+        }}
       >
-        {organization}
-      </motion.p>
-    </motion.button>
+        2026
+      </motion.div>
+    </motion.div>
   );
 }

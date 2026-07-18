@@ -1,31 +1,29 @@
 "use client";
 
 import Reveal from "@/components/animations/Reveal";
+import { ArrowUpRight } from "lucide-react";
 
 const achievements = [
   {
-    year: "2025",
     title: "Flipkart GRID",
     subtitle: "Software Development Track",
-    description:
-      "Qualified for the Semi-Finals by developing scalable solutions and solving real-world engineering challenges.",
     badge: "Semi Finalist",
+    certificate:
+      "https://drive.google.com/file/d/1Po3WBIRw-b_3s13ymQnUEv-Ip8uX9psv/view",
   },
   {
-    year: "2025",
     title: "Adobe India Hackathon",
     subtitle: "National Level Hackathon",
-    description:
-      "Collaborated on innovative product ideas, rapid prototyping and technical problem solving under strict timelines.",
     badge: "Participant",
+    certificate:
+      "https://drive.google.com/file/d/185V2WEN9n7XcwGka45WRXUm055uIPFCY/view",
   },
   {
-    year: "2025",
     title: "Deloitte Technology Job Simulation",
     subtitle: "Forage",
-    description:
-      "Completed practical software engineering tasks involving system design, development workflows and technical documentation.",
     badge: "Completed",
+    certificate:
+      "https://drive.google.com/file/d/142lENsIj_xXftwUUA-s_AHvKLciclPj1/view",
   },
 ];
 
@@ -33,103 +31,159 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="section bg-white text-[var(--text-dark)]"
+      className="section bg-[var(--blush)] text-[var(--text-dark)] py-32"
     >
-      <div className="container">
+      <div className="container max-w-5xl">
 
-        <Reveal>
+        {/* Heading */}
 
-          <p className="eyebrow">
-            ACHIEVEMENTS
-          </p>
+<Reveal>
+  <div className="mx-auto max-w-3xl text-center">
 
-          <h2 className="heading-lg mt-6 max-w-4xl">
-            Milestones that reflect my
-            growth as an engineer.
-          </h2>
+    <span
+            className="
+              inline-flex
+              rounded-full
+              bg-[var(--experience-accent)]
+              px-4
+              py-2
+              text-sm
+              font-semibold
+              text-[var(--pink)]
+            "
+          >
+      ACHIEVEMENTS
+    </span>
 
-          <p className="copy mt-8">
-            Competitions, hackathons and technical programs
-            have helped me strengthen problem-solving,
-            collaboration and software engineering skills.
-          </p>
+    <h2
+      className="
+        mt-4
+        text-5xl
+        font-bold
+        tracking-tight
+        text-[var(--experience-accent)]
+        lg:text-6xl
+      "
+    >
+      Beyond the Classroom
+    </h2>
 
-        </Reveal>
+    <p
+      className="
+        mx-auto
+        mt-5
+        max-w-xl
+        text-lg
+        leading-8
+        text-[var(--experience-text)]
+      "
+    >
+      Hackathons, competitions & certifications.
+    </p>
 
-        <div className="mt-24 space-y-8">
+  </div>
+</Reveal>
+
+        {/* List */}
+
+        <div className="mt-14">
 
           {achievements.map((item, index) => (
 
             <Reveal
               key={item.title}
-              delay={index * 0.1}
+              delay={index * 0.08}
             >
 
-              <div
+              <a
+                href={item.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
-                  grid
-                  gap-10
-                  rounded-[32px]
-                  border
+                  group
+                  relative
+                  flex
+                  items-center
+                  justify-between
+                  gap-8
+                  border-b
                   border-[var(--border-light)]
-                  bg-[var(--surface-alt)]
-                  p-10
+                  py-7
                   transition-all
                   duration-300
-                  hover:-translate-y-1
-                  hover:shadow-xl
-                  lg:grid-cols-[120px_1fr_auto]
+                  hover:bg-[var(--surface-alt)]
+                  hover:px-6
                 "
               >
 
-                {/* Year */}
+                {/* Accent */}
+
+                <div
+                  className="
+                    absolute
+                    left-0
+                    top-0
+                    h-full
+                    w-1
+                    origin-center
+                    scale-y-0
+                    rounded-full
+                    bg-[var(--experience-accent)]
+                    transition-transform
+                    duration-300
+                    group-hover:scale-y-100
+                  "
+                />
+
+                {/* Left */}
 
                 <div>
 
-                  <p
-                    className="
-                      text-5xl
-                      font-black
-                      tracking-tight
-                      text-[var(--primary)]
-                    "
-                  >
-                    {item.year}
-                  </p>
+                  <div className="flex items-center gap-3">
 
-                </div>
+                    <h3
+                      className="
+                        text-2xl
+                        font-bold
+                        transition-colors
+                        text-[var(--mauve)]
+                        group-hover:text-[var(--primary)]
+                      "
+                    >
+                      {item.title}
+                    </h3>
 
-                {/* Content */}
+                    <ArrowUpRight
+                      size={18}
+                      className="
+                        transition-transform
+                        duration-300
+                        group-hover:-translate-y-1
+                        group-hover:translate-x-1
+                      "
+                    />
 
-                <div>
+                  </div>
 
-                  <h3 className="text-3xl font-bold">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-2 text-lg text-[var(--primary)]">
+                  <p className="mt-1 text-[var(--text-light)]">
                     {item.subtitle}
                   </p>
 
-                  <p className="mt-6 leading-8 text-[var(--text-light)]">
-                    {item.description}
-                  </p>
-
                 </div>
 
-                {/* Badge */}
+                {/* Right */}
 
-                <div className="flex items-start lg:justify-end">
+                <div className="flex items-center gap-4">
 
                   <span
                     className="
                       rounded-full
-                      bg-[var(--primary)]
-                      px-5
-                      py-3
+                      bg-[var(--mauve)]
+                      px-4
+                      py-2
                       text-sm
                       font-semibold
-                      text-white
+                      text-[var(--surface-alt)]
                     "
                   >
                     {item.badge}
@@ -137,7 +191,7 @@ export default function Achievements() {
 
                 </div>
 
-              </div>
+              </a>
 
             </Reveal>
 

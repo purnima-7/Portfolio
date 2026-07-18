@@ -10,7 +10,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 export default function Hero() {
   return (
     <section
-      id="home"
+      id="about"
       className="
         relative
         overflow-hidden

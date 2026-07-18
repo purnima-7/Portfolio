@@ -1,7 +1,7 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 
 interface KeyContributionsProps {
   contributions: string[];
@@ -11,99 +11,85 @@ export default function KeyContributions({
   contributions,
 }: KeyContributionsProps) {
   return (
-    <div className="mt-10">
+    <div>
+
       {/* Heading */}
 
-      <div className="mb-6 flex items-center gap-3">
-        <div className="h-px w-8 bg-[var(--mauve)]" />
+      <div className="flex items-center gap-4">
+
+        <div
+          className="h-px w-12"
+          style={{
+            background: "var(--experience-accent)",
+          }}
+        />
 
         <h4
           className="
             text-sm
             font-semibold
             uppercase
-            tracking-[0.2em]
-            text-[var(--text-light)]
+            tracking-[0.28em]
           "
+          style={{
+            color: "var(--experience-heading)",
+          }}
         >
           Key Contributions
         </h4>
+
       </div>
 
-      {/* Contribution List */}
+      {/* List */}
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {contributions.map((item, index) => (
-          <motion.div
-            key={item}
-            initial={{
-              opacity: 0,
-              y: 10,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              delay: index * 0.08,
-            }}
-            whileHover={{
-              x: 6,
-            }}
-            className="
-              group
-              flex
-              items-center
-              gap-3
-              rounded-2xl
-              border
-              border-[var(--border)]
-              bg-white/70
-              px-5
-              py-4
-              transition-all
-              duration-300
-              hover:border-[var(--mauve)]
-              hover:shadow-md
-            "
-          >
-            <div
-              className="
-                flex
-                h-9
-                w-9
-                items-center
-                justify-center
-                rounded-full
-                bg-[var(--surface-alt)]
-                transition-colors
-                duration-300
-                group-hover:bg-[var(--mauve)]
-              "
-            >
-              <ArrowUpRight
-                size={16}
-                className="
-                  text-[var(--mauve)]
-                  transition-colors
-                  duration-300
-                  group-hover:text-white
-                "
-              />
-            </div>
+<div className="mt-7 flex flex-wrap gap-4">
+  {contributions.map((item, index) => (
+    <motion.div
+      key={item}
+      initial={{
+        opacity: 0,
+        y: 10,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{ once: true }}
+      transition={{
+        delay: index * 0.08,
+      }}
+      className="
+        flex
+        items-center
+        gap-3
+        rounded-full
+        border
+        px-5
+        py-3
+      "
+      style={{
+        background: "var(--experience-chip)",
+        borderColor: "var(--experience-border)",
+      }}
+    >
+      <Check
+        size={16}
+        strokeWidth={2.5}
+        color="var(--experience-accent)"
+      />
 
-            <span
-              className="
-                text-sm
-                font-medium
-                text-[var(--text-dark)]
-              "
-            >
-              {item}
-            </span>
-          </motion.div>
-        ))}
-      </div>
+      <span
+        className="text-sm font-medium"
+        style={{
+          color: "var(--experience-heading)",
+        }}
+      >
+        {item}
+      </span>
+    </motion.div>
+  ))}
+</div>
+
     </div>
   );
 }

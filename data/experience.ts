@@ -12,6 +12,10 @@ export interface Experience {
   description: string;
 
   highlights: string[];
+
+  certificate: string;
+
+  tech: string[];
 }
 
 export const experiences: Experience[] = [
@@ -35,51 +39,16 @@ export const experiences: Experience[] = [
       "Cross-functional Collaboration",
       "Professional Development",
     ],
-  },
 
-  {
-    year: "2025",
+    certificate: "https://drive.google.com/file/d/1hts1iLsll0C_D5x4S4D7ZDFHq6JkhSc8/view?usp=drive_link",
 
-    duration: "Aug 2025 – May 2026",
-
-    role: "Delegate Affairs Head",
-
-    organization: "Parola",
-    organizationFull: "Parola – The Literary Hub",
-
-    type: "Leadership",
-
-    description:
-      "Led delegate management and coordinated event operations for one of the university's flagship literary events, ensuring smooth communication, logistics, and participant experience for over 200 delegates.",
-
-    highlights: [
-      "Leadership",
-      "200+ Delegates",
-      "Event Management",
-      "Team Coordination",
-    ],
-  },
-
-  {
-    year: "2024",
-
-    duration: "May 2024 – May 2025",
-
-    role: "Technical Team Member",
-
-    organization: "AI/ML HUB",
-    organizationFull: "AI/ML HUB",
-
-    type: "Technical",
-
-    description:
-      "Contributed to AI and Machine Learning initiatives by participating in technical workshops, collaborative projects, and prototype development focused on computer vision and practical AI applications.",
-
-    highlights: [
-      "Machine Learning",
-      "Computer Vision",
-      "Prototype Development",
-      "Technical Collaboration",
+    tech: [
+      "Python", 
+      "SQL", 
+      "MS Excel", 
+      "Windows", 
+      "SAP ERP (Exposure)", 
+      "Networking Basics",
     ],
   },
 ];

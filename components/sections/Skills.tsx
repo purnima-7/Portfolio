@@ -9,7 +9,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-[var(--surface-alt)] py-28"
+      className="relative overflow-hidden bg-[var(--background)] py-28"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -38,10 +38,10 @@ export default function Skills() {
               text-[var(--prune)]
             "
           >
-            Technical Expertise
+            TECHNICAL EXPERTISE
           </span>
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight text-[var(--text-dark)] md:text-5xl">
+          <h2 className="mt-6 text-4xl font-bold tracking-tight text-[var(--primary)] md:text-5xl">
             Skills & Technologies
           </h2>
 
@@ -55,28 +55,23 @@ export default function Skills() {
         {/* Bento Grid */}
         <div className="grid gap-8 lg:grid-cols-12">
           {/* Languages */}
-          <div className="lg:col-span-5 flex">
+          <div className="lg:col-span-4 flex">
             <SkillCard {...skills[0]} delay={0.05} />
           </div>
 
           {/* Frontend */}
-          <div className="lg:col-span-7 flex">
+          <div className="lg:col-span-5 flex">
             <SkillCard {...skills[1]} delay={0.1} />
           </div>
 
-          {/* Backend */}
-          <div className="lg:col-span-7 flex">
-            <SkillCard {...skills[2]} delay={0.15} />
-          </div>
-
           {/* Databases */}
-          <div className="lg:col-span-5 flex">
+          <div className="lg:col-span-3 flex">
             <SkillCard {...skills[3]} delay={0.2} />
           </div>
 
-          {/* AI */}
+          {/* Backend */}
           <div className="lg:col-span-6 flex">
-            <SkillCard {...skills[4]} delay={0.25} />
+            <SkillCard {...skills[2]} delay={0.15} />
           </div>
 
           {/* Cloud */}
@@ -84,8 +79,13 @@ export default function Skills() {
             <SkillCard {...skills[5]} delay={0.3} />
           </div>
 
+          {/* AI */}
+          <div className="lg:col-span-5 flex">
+            <SkillCard {...skills[4]} delay={0.25} />
+          </div>
+
           {/* Core CS */}
-          <div className="lg:col-span-12 flex">
+          <div className="lg:col-span-7 flex">
             <SkillCard {...skills[6]} delay={0.35} />
           </div>
         </div>

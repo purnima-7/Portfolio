@@ -80,7 +80,7 @@ export default function SkillCard({
         <div
           className="
             flex
-            h-14
+            h-10
             w-14
             items-center
             justify-center
@@ -109,10 +109,6 @@ export default function SkillCard({
           <h3 className="text-2xl font-bold text-[var(--text-dark)]">
             {title}
           </h3>
-
-          <p className="mt-2 text-sm leading-7 text-[var(--text-light)]">
-            {description}
-          </p>
         </div>
       </div>
 

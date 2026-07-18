@@ -14,11 +14,11 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      {/* <EngineeringHighlights /> */}
+      <EngineeringHighlights />
       <Skills />
       <Experience />
       <Projects />
-      {/* <Leadership /> */}
+      <Leadership />
       <Achievements />
       <Contact />
       <Footer />

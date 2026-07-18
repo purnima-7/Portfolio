@@ -42,6 +42,34 @@
 
   --radius-xl: 32px;
   --radius-lg: 24px;
+
+  /* Experience */
+
+  --experience-bg: #E7DFE5;
+  --experience-card: #F7F5F6;
+  --experience-border: #D4CCD1;
+
+  --experience-accent: #71616D;
+  --experience-accent-soft: #C4CFDF;
+
+  --experience-surface: #D9DDE2;
+  --experience-chip: #ECE8EA;
+
+  --experience-heading: #232229;
+  --experience-text: #67616A;
+
+  /* Experience */
+
+  --leadership-bg: #3E3942;
+  --leadership-surface: #4B4550;
+  --leadership-card: #56505B;
+  --leadership-border: #6C6570;
+  
+  --leadership-accent: #C4CFDF;
+  --leadership-accent-soft: #D9DDE2;
+  
+  --leadership-heading: #F6F4F5;
+  --leadership-text: #D7D2D8;
 }
 
 body {

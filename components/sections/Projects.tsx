@@ -11,20 +11,47 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="section dark-section"
+      className="section dark-section pt-32 pb-20"
     >
-      <div className="container">
+      <div className="container text-center">
 
         <Reveal>
-          <p className="eyebrow">
-            Selected Projects
-          </p>
+          <span
+            className="
+              inline-flex
+              rounded-full
+              bg-[var(--pink)]
+              px-4
+              py-2
+              text-sm
+              font-semibold
+              text-[var(--prune)]
+            "
+          >
+            PROJECTS
+          </span>
 
-          <h2 className="heading-lg mt-6 max-w-4xl">
-            More things I&apos;ve built.
-          </h2>
+          <h2
+                      className="
+                        mt-5
+                        text-5xl
+                        font-bold
+                        text-[var(--primary)]
+                      "
+                    >
+                      More things I&apos;ve built
+                    </h2>
 
-          <p className="copy mt-8">
+          <p
+            className="
+              mx-auto
+              mt-6
+              max-w-2xl
+              text-lg
+              leading-8
+              text-[var(--text-light)]
+            "
+          >
             Beyond my featured work, these projects reflect my
             interest in building scalable web applications,
             AI-powered solutions and developer-focused tools.

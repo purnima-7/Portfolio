@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 
 import { navigation } from "@/data/navigation";
+import FooterNavLink from "@/components/footer/FooterNavLink";
+import FooterSocialLink from "@/components/footer/FooterSocialLink";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -20,47 +22,7 @@ export default function Footer() {
 
       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      <div className="container py-20">
-
-        {/* CTA */}
-
-        <div className="flex flex-col items-start justify-between gap-12 border-b border-white/10 pb-16 lg:flex-row lg:items-end">
-
-          <div>
-
-            <p className="eyebrow">
-              LET&apos;S CONNECT
-            </p>
-
-            <h2 className="mt-6 max-w-3xl text-5xl font-black leading-tight tracking-[-0.04em]">
-              Interested in building
-              <br />
-              something together?
-            </h2>
-
-          </div>
-
-          <Link
-            href="mailto:your.email@gmail.com"
-            className="
-              inline-flex
-              items-center
-              gap-3
-              rounded-full
-              bg-[var(--primary)]
-              px-7
-              py-4
-              font-medium
-              transition-all
-              duration-300
-              hover:scale-105
-            "
-          >
-            Say Hello
-            <ArrowUpRight size={18} />
-          </Link>
-
-        </div>
+      <div className="container pb-10 pt-5">
 
         {/* Middle */}
 
@@ -94,19 +56,13 @@ export default function Footer() {
             <div className="space-y-4">
 
               {navigation.map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  className="
-                    block
-                    text-white/70
-                    transition-colors
-                    hover:text-white
-                  "
-                >
-                  {item.label}
-                </Link>
-              ))}
+    <FooterNavLink
+        key={item.id}
+        href={item.href}
+    >
+        {item.label}
+    </FooterNavLink>
+))}
 
             </div>
 
@@ -122,26 +78,19 @@ export default function Footer() {
 
             <div className="space-y-5">
 
-              <Link
-                href="https://github.com/purnima-7"
-                target="_blank"
-                className="flex items-center gap-3 text-white/70 transition hover:text-white"
-              >
-                <FaGithub />
-                GitHub
-              </Link>
+              <FooterSocialLink
+    href="https://github.com/purnima-7"
+    icon={<FaGithub />}
+    label="GitHub"
+/>
 
+              <FooterSocialLink
+    href="https://www.linkedin.com/in/purnimasingh07/"
+    icon={<FaLinkedin />}
+    label="LinkedIn"
+/>
               <Link
-                href="https://linkedin.com/in/YOUR-LINKEDIN"
-                target="_blank"
-                className="flex items-center gap-3 text-white/70 transition hover:text-white"
-              >
-                <FaLinkedin />
-                LinkedIn
-              </Link>
-
-              <Link
-                href="mailto:your.email@gmail.com"
+                href="mailto:purnimasingh1519@gmail.com"
                 className="flex items-center gap-3 text-white/70 transition hover:text-white"
               >
                 <FaEnvelope />
@@ -185,7 +134,7 @@ export default function Footer() {
           </div>
 
           <Link
-            href="#home"
+            href="#about"
             className="
               rounded-full
               border

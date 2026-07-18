@@ -1,137 +1,128 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import Reveal from "@/components/animations/Reveal";
+import { experiences } from "@/data/experience";
 
 import Timeline from "@/components/experience/Timeline";
 import ExperienceCard from "@/components/experience/ExperienceCard";
 
-import { experiences } from "@/data/experience";
-
 export default function Experience() {
-  // Latest experience selected by default
-  const [activeIndex, setActiveIndex] = useState(0);
+  const experience = experiences[0];
 
   return (
     <section
       id="experience"
-      className="
-        relative
-        overflow-hidden
-        bg-[var(--background)]
-        py-32
-      "
+      className="relative overflow-hidden py-28"
+      style={{
+        background: "var(--experience-bg)",
+      }}
     >
       {/* Background Glow */}
 
       <div
         className="
+          pointer-events-none
           absolute
           left-1/2
           top-0
-          h-[600px]
-          w-[600px]
+          h-[480px]
+          w-[480px]
           -translate-x-1/2
           rounded-full
-          bg-[var(--mauve)]
-          opacity-5
           blur-[140px]
         "
+        style={{
+          background: "var(--experience-accent-soft)",
+          opacity: 0.16,
+        }}
       />
 
-      <div className="container mx-auto max-w-7xl px-6">
+      <div className="container relative z-10">
 
-        {/* Section Header */}
+        {/* Heading */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <p
-            className="
-              text-sm
-              font-semibold
-              uppercase
-              tracking-[0.35em]
-              text-[var(--primary)]
-            "
-          >
-            Experience
-          </p>
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
 
-          <h2
-            className="
-              mt-5
-              text-5xl
-              font-bold
-              text-[var(--primary)]
-            "
-          >
-            Building Through
-            <br />
-            Real Experiences
-          </h2>
+            <span
+              className="
+                inline-flex
+                items-center
+                rounded-full
+                border
+                px-5
+                py-2
+                text-sm
+                font-semibold
+                uppercase
+                tracking-[0.28em]
+              "
+              style={{
+                background: "var(--experience-accent)",
+                borderColor: "var(--experience-border)",
+                color: "var(--experience-surface)",
+              }}
+            >
+              Experience
+            </span>
 
-          <p
-            className="
-              mx-auto
-              mt-6
-              max-w-2xl
-              text-lg
-              leading-8
-              text-[var(--text-light)]
-            "
-          >
-            From technical communities to enterprise internships,
-            every milestone has shaped how I approach engineering,
-            collaboration, and product thinking.
-          </p>
-        </motion.div>
+            <h2
+              className="
+                mt-6
+                text-4xl
+                font-bold
+                tracking-tight
+                md:text-5xl
+              "
+              style={{
+                color: "var(--experience-heading)",
+              }}
+            >
+              Building practical engineering
+              <br />
+              experience through real work.
+            </h2>
 
-        {/* Timeline */}
+            <p
+              className="
+                mx-auto
+                mt-6
+                max-w-2xl
+                text-lg
+                leading-8
+              "
+              style={{
+                color: "var(--experience-text)",
+              }}
+            >
+              My professional journey so far has focused on applying software
+              engineering principles in real-world environments while learning
+              from experienced teams.
+            </p>
 
-        <div className="mt-24">
-          <Timeline
-            experiences={experiences}
-            activeIndex={activeIndex}
-            onSelect={setActiveIndex}
-          />
-        </div>
+          </div>
+        </Reveal>
 
-        {/* Experience Card */}
+        {/* Timeline + Card */}
 
-        <motion.div
-          key={activeIndex}
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.45,
-          }}
+        <div
           className="
             mx-auto
             mt-20
-            max-w-5xl
+            grid
+            max-w-6xl
+            grid-cols-1
+            gap-10
+            lg:grid-cols-[90px_1fr]
+            lg:items-start
           "
         >
-          <ExperienceCard
-            experience={experiences[activeIndex]}
-          />
-        </motion.div>
+          <Timeline />
+
+          <Reveal delay={0.15}>
+            <ExperienceCard experience={experience} />
+          </Reveal>
+        </div>
 
       </div>
     </section>

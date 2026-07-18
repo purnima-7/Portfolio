@@ -1,127 +1,49 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-
 import TimelineNode from "./TimelineNode";
 
-import { Experience } from "@/data/experience";
-
-interface TimelineProps {
-  experiences: Experience[];
-  activeIndex: number;
-  onSelect: (index: number) => void;
-}
-
-export default function Timeline({
-  experiences,
-  activeIndex,
-  onSelect,
-}: TimelineProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  // Automatically center active node
-  useEffect(() => {
-    const container = scrollRef.current;
-
-    if (!container) return;
-
-    const activeNode =
-      container.querySelector(
-        `[data-index="${activeIndex}"]`
-      ) as HTMLElement;
-
-    activeNode?.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
-  }, [activeIndex]);
-
+export default function Timeline() {
   return (
-    <div className="relative w-full">
-
-      {/* Left Fade */}
-
-      <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-20 bg-gradient-to-r from-[var(--background)] to-transparent" />
-
-      {/* Right Fade */}
-
-      <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-20 bg-gradient-to-l from-[var(--background)] to-transparent" />
-
-      {/* Scroll Area */}
-
+    <div
+      className="
+        relative
+        flex
+        justify-center
+        lg:justify-start
+      "
+    >
       <div
-        ref={scrollRef}
         className="
           relative
-          overflow-x-auto
-          scrollbar-hide
-          snap-x
-          snap-mandatory
-          px-12
-          pt-12
-          pb-20
-          touch-pan-x
-          overscroll-x-contain
-          [-webkit-overflow-scrolling:touch]
+          flex
+          flex-col
+          items-center
         "
       >
+        {/* Node */}
 
-        {/* Timeline Container */}
+        <TimelineNode active />
+
+        {/* Vertical Line */}
 
         <div
-          className="
-            relative
-            flex
-            min-w-max
-            items-start
-            justify-start
-            gap-36
-            px-20
-          "
-        >
+          className="mt-3 w-px rounded-full"
+          style={{
+            height: "360px",
+            background:
+              "linear-gradient(to bottom, var(--experience-accent), var(--experience-border))",
+          }}
+        />
 
-          {/* Base Timeline */}
+        {/* End Dot */}
 
-          <div
-            className="
-              absolute
-              left-0
-              right-0
-              top-6
-              h-[2px]
-              bg-[var(--border)]
-            "
-          />
-
-          {/* Timeline Nodes */}
-
-{experiences.map((experience, index) => (
-  <div
-    key={experience.role}
-    data-index={index}
-    className="
-      relative
-      z-10
-      flex
-      snap-center
-      justify-center
-    "
-  >
-    <TimelineNode
-      year={experience.year}
-      organization={experience.organization}
-      active={activeIndex === index}
-      onClick={() => onSelect(index)}
-    />
-  </div>
-))}
-
-        </div>
-
+        <div
+          className="mt-2 h-2 w-2 rounded-full"
+          style={{
+            background: "var(--experience-border)",
+          }}
+        />
       </div>
-
     </div>
   );
 }
